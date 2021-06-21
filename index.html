@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Local Storage Challenge</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Storage Challenge</title>
 </head>
+
 <body>
-    <p id="output"></p>
-    <script>
+  <p id="output"></p>
+  <script>
 
-        let myJSON = '{ "name":"Mpho", "surname": "Beki", "interests": ["hockey","volleyball","tennis"],"DOB": "1982/04/17","no.": "082.909.9182" }';
-        //Convert to JavaScript object and convert date and number
-        let myJSObj = JSON.parse(myJSON, function (key, value) {
-          if (key == "DOB") {
-            return new Date(value);
-            }
-            else if (key === "no.") {return parseFloat(value)
-          } else {
-            return value;
-          }
-        });
-        
-        console.log(myJSObj);
+    let myJSON = '{ "name":"Mpho", "surname": "Beki", "interests": ["hockey","volleyball","tennis"],"DOB": "1982/04/17","no.": "082.909.9182" }';
+    //Convert to JavaScript object and convert date and number
+    let myJSObj = JSON.parse(myJSON, function (key, value) {
+      if (key == "DOB") {
+        return new Date(value);
+      }
+      else if (key === "no.") {
+        return parseFloat(value)
+      } else {
+        return value;
+      }
+    });
 
-       //Convert back to JSON data
-       let myJSON2 = JSON.stringify(myJSObj);
+    console.log(myJSObj);
 
-       //Save to local storage
-       localStorage.setItem("JSONData", myJSON2);
+    //Convert back to JSON data
+    let myJSON2 = JSON.stringify(myJSObj);
 
-      //Access data
-       let myText = localStorage.getItem("JSONData");
+    //Save to local storage
+    localStorage.setItem("JSONData", myJSON2);
 
-      //Convert back to JavaScript object and print JSON data in html element   
-      let newObj = JSON.parse(myText);
-      document.getElementById("output").innerHTML = myText;
-      console.log(newObj.name);
+    //Access data
+    let myText = localStorage.getItem("JSONData");
 
-            </script>
+    //Convert back to JavaScript object and print JSON data in html element   
+    let newObj = JSON.parse(myText);
+    document.getElementById("output").innerHTML = myText;
+    console.log(newObj.name);
+
+  </script>
 </body>
+
 </html>
